@@ -1,0 +1,99 @@
+
+Animal hpp     competition hpp     competition hpp     competition hpp    competition cpp
+Animal cpp     competition cpp     competition cpp     competition cpp    competition cpp
+    
+
+line comment: command k+ command c
+comment out: command k+ command u
+//get an make 
+//couldnt complete the competion file
+
+Motivation for polymorphism: if our Competition class applies to all animals, then later on, whichever new species is generated, you do not need to change one line your Competition class.
+
+You will reuse some of your codes in Hare and Tortoise Competition, but you need to modify some. So, remember to make a backup copy of your original source code.
+
+1.	Design class Animal, which includes data member position, move patterns, and mark id. In this application, for an animal, we care about the following attributes:
+(a)	Species name of an animal, say hare, tortoise, duck, elephant.
+(b)	current position of an animal
+(c)	move patterns of an animal, represented in an array of integers, and 
+(d)	mark id of an animal. For example, the mark id for a hare is letter ‘H’; and mark id for a tortoise is letter ‘T’, and so on. 
+(e)	 You need to write setters and getters for these data members.
+(f)	Declare an abstract method showExcitement to print out a short phrase indicating what an animal will do to show its excitement when it wins. 
+For example, if a hare wins, it fluffs its tail; if a tortoise wins, it sticks out its head; if a duck wins, it quacks; if an elephant wins, it throws its nose.
+
+virtual void showExcitement() const;
+
+Keyword virtual before method showExcitement means the method is going to be overridden by subclasses of Animal. Keyword const after parameter list means showExcitement does not change the data members of the current object.
+
+2.	Extend Hare class from Animal. Write constructor(s) and set appropriate values for corresponding data members.
+
+3.	Similarly, extend Tortoise class from Animal.
+
+4.	Before you go to the next step, test your code to make sure that competition still works between a hare and a tortoise (whether you write Hare and Tortoise directly or derive these classes from Animal class, each animal still shares the same behavior.)
+
+5.	Next, we need to rewrite Competition class so that the competition will not be restricted to hare and tortoise only. This is an application of polymorphism. That is, the competition now involves a vector of animals and a road.
+
+6.	Since we do not know how many winners in the end, we use vector<Animal*> to record the winners. Here is how a variable called winner is declared and instantiated.
+
+vector<Animal*> winners;
+
+Note that each element of vector winners must be a pointer of Animal, otherwise, it would have "slicing" problem, that is, the subclass's info is sliced out, and only super class's info is kept. Remember the requirements of polymorphism?
+
+7.	In competition, you can use push_back method of vector to add champion(s) of competition to vector winners.
+
+8.	Report the winner(s).
+
+9.	Note this project applies the concept of polymorphism: Competition class involves a vector of animals. In case we have a new species, we just need to extend that species from Animal class, then test the competition by adding one such animal to the animal array in CompetitionClient class. However, not one line of Competition needs to be modified. 
+
+10.	Here is a sample run of my code (suppose hare, tortoise, elephant, and duck participate in a competition). Sometimes two animals are located in the same position, so only one mark is shown (see time stamp 12 of the following ouput)
+
+start a game
+  1 D        H                                                  
+  2      D   T        H                                         
+  3 T     H   D                                                 
+  4 T   H     D                                                 
+  5  T         D H                                              
+  6   T       D           H                                     
+  7            T   D    H                                       
+  8          T    D     H                                       
+  9          T         DH                                       
+ 10           T          D                                      
+ 11          HT            D                                    
+ 12        H   T             D                                  
+ 13 H           T             D                                 
+ 14 H                    T   D                                  
+ 15 H                          D  T                             
+ 16  H                        D    T                            
+ 17           H                    DT                           
+ 18           H                     TD                          
+ 19         H                       T     D                     
+ 20          H          T                  D                    
+ 21           H          T                D                     
+ 22         H             T                    D                
+ 23         H           T                        D              
+ 24          H          T                             D         
+ 25        H          T                              D          
+ 26         H          T                                  D     
+ 27                  H          T                           D   
+ 28      H                       T                             D
+winners
+Duck shouts quack.
+
+Sometimes there can be more than one winner, shown as follows, where I use a shorter road for competition.
+
+start a game
+  1 D        T      
+  2      D   HT     
+  3        HT D     
+  4          T     D
+winners
+Hare jumps high.
+Duck shouts quack.
+
+
+
+Question:
+
+1. How ar we updatng cpp files for hare and tortoise?
+2. are we using same old road cpp and hpp?
+using  showExcitement in hpp for hare and tortoise

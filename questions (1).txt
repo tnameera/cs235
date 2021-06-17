@@ -1,0 +1,79 @@
+QUESTION 1: In arrayBay.hpp file:
+        template<class T> //itemtype instead of class
+        ArrayBag<T>::ArrayBag()
+        {
+            capacity = 10; //0-9
+            items = new T[capacity]; 
+            size = 0; //number of elements residing in array items is 0
+        }
++-------------------------------------------------+
+|QUESTION: WHY USE items = new T[capacity];       |
++-------------------------------------------------+
+
+QUESTION 2: 
++---------------------------------------------------+
+|QUESTION: WHY ARE THERE DOUBLE CONST DECLARATION?? |
++---------------------------------------------------+
+        ex: in the constains function:
+            bool ArrayBag<T>::contains(const T& piece) const
+            int ArrayBag<T>::getFrequencyOf(const T& piece) const
+
+QUESTION 3: 
+        In the arrayBag tovector function: 
+        std::vector<T> ArrayBag<T>::toVector() const
+        {
+            std::vector<T> results; 
+            for (int i = 0; i < size; i++)
+                results.push_back(items[i]);
+            return results;
+        }
++---------------------------------------------------+
+|QUESTION: WHY ARE WE APPENDING ITEM TO THE VECTOR? |
++---------------------------------------------------+
+
+QUESTION 4: get vs setnext
+
+QUESTION 5:
+List(const List<T>& a_list); // copy constructor
+    //WHAT ARE we COPYING IN THE 2ND CONSTRUCTOR-DEEP COPY/SHALLOW?
+
+QUESTION 6:
+ T getItem(size_t position) const;
+    //WHAT IS T???
+
+QUESTION 7:
+ size_t getLength() const;
+    //WHAT IS size_t??
+
+
+items = new T[capacity]; is to apply an array of size equal to capacity and return the initial address of the array to items.
+
+11:30 AM
+So in this case, you do not need to fix the capacity in running.
+
+11:31 AM
+In the textbook, it uses const int CAPACITY = 10;
+
+11:31 AM
+T items[CAPACITY];
+
+T getItem(size_t position) const; professor what does this T and size _t refers here
+
+Tong Yi
+Tong Yi
+11:35 AM
+
+T is a general type since List is a class template.
+
+11:35 AM
+template<class T>
+
+11:35 AM
+T List<T>::getItem() const
+
+11:36 AM
+T can be any type, we can use List<int> is an int list, List<string> is a string list.
+
+
+
+
